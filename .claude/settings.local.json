@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for dir:*)",
+      "Bash(do mkdir:*)",
+      "Bash(mkdir -p \"$dir/examples\" \"$dir/exercises\")",
+      "Bash(touch \"$dir/readme.md\")",
+      "Bash(done)",
+      "Bash(cd:*)",
+      "WebFetch(domain:langgraph4j.github.io)",
+      "WebSearch",
+      "Bash(curl -s https://langgraph4j.github.io/langgraph4j/apidocs/)",
+      "Bash(curl -s https://langgraph4j.github.io/langgraph4j/apidocs/org/bsc/langgraph4j/package-summary.html)",
+      "Bash(curl -s https://langgraph4j.github.io/langgraph4j/apidocs/org/bsc/langgraph4j/StateGraph.html)",
+      "Bash(curl -s https://langgraph4j.github.io/langgraph4j/apidocs/org/bsc/langgraph4j/agent/AgentState.html)",
+      "Bash(curl -s https://langgraph4j.github.io/langgraph4j/apidocs/allclasses-index.html)",
+      "Bash(curl:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
