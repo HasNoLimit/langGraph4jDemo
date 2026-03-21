@@ -18,7 +18,8 @@
       "WebFetch(domain:github.com)",
       "Bash(mvn clean:*)",
       "Bash(mvn:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(find . -name *.jar)"
     ]
   }
 }
