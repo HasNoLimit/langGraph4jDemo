@@ -1,0 +1,49 @@
+{
+    "id": "greeting-bot",
+    "name": "问候机器人",
+    "description": "使用系统变量生成问候语",
+    "nodes": [
+        {
+            "id": "start",
+            "type": "start",
+            "config": {
+                "nodeId": "start",
+                "nodeName": "开始",
+                "inputs": [
+                    {"name": "name", "type": "string", "required": true}
+                ]
+            }
+        },
+        {
+            "id": "llm",
+            "type": "llm",
+            "config": {
+                "nodeId": "llm",
+                "nodeName": "问候生成",
+                "model": "gpt-3.5-turbo",
+                "promptTemplate": "当前时间：{{__now}}\n用户姓名：{{name}}\n\n请根据时间给出合适的问候语（早上好/下午好/晚上好），并称呼用户的名字。",
+                "outputMapping": {
+                    "output": "greeting"
+                }
+            }
+        },
+        {
+            "id": "end",
+            "type": "end",
+            "config": {
+                "nodeId": "end",
+                "nodeName": "结束",
+                "outputTemplate": {
+                    "greeting": "{{greeting}}",
+                    "timestamp": "{{__now}}"
+                }
+            }
+        }
+    ],
+    "edges": [
+        {"source": "__START__", "target": "start"},
+        {"source": "start", "target": "llm"},
+        {"source": "llm", "target": "end"},
+        {"source": "end", "target": "__END__"}
+    ]
+}

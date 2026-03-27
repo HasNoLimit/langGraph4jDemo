@@ -1,0 +1,50 @@
+{
+    "id": "simple-chat",
+    "name": "简单对话",
+    "description": "基础 Start -> LLM -> End 流程",
+    "nodes": [
+        {
+            "id": "start",
+            "type": "start",
+            "config": {
+                "nodeId": "start",
+                "nodeName": "开始",
+                "inputs": [
+                    {"name": "query", "type": "string", "required": true}
+                ]
+            }
+        },
+        {
+            "id": "llm",
+            "type": "llm",
+            "config": {
+                "nodeId": "llm",
+                "nodeName": "AI 回复",
+                "model": "gpt-3.5-turbo",
+                "temperature": 0.7,
+                "promptTemplate": "用户问题：{{query}}\n\n请友好地回答：",
+                "outputMapping": {
+                    "output": "aiResponse"
+                }
+            }
+        },
+        {
+            "id": "end",
+            "type": "end",
+            "config": {
+                "nodeId": "end",
+                "nodeName": "结束",
+                "outputTemplate": {
+                    "answer": "{{aiResponse}}",
+                    "originalQuery": "{{query}}"
+                }
+            }
+        }
+    ],
+    "edges": [
+        {"source": "__START__", "target": "start"},
+        {"source": "start", "target": "llm"},
+        {"source": "llm", "target": "end"},
+        {"source": "end", "target": "__END__"}
+    ]
+}
